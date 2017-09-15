@@ -1,0 +1,53 @@
+---
+title: "Zihao_Li_Homework2"
+output: github_document
+---
+
+```{r setup, include=F}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### This assignment will explore two variables: "position" and "points."
+```{r, eval = T}
+load("nba2017-salary-points.RData")
+```
+
+
+The summary of the quantitaive variable "points" is give as the following:
+
+```{r, eval = T}
+summary(points)
+```
+
+The various statistics of the variable is given by:
+```{r, eval = T}
+mean(points)
+
+sd(points)
+
+min(points)
+
+max(points)
+
+median(points)
+
+quantile(points, names = F)
+
+spread <- max(points) - min(points)
+spread
+```
+
+The distribution of the variable is given in the following graphs:
+```{r, eval = T}
+hist(points, main = paste("Histogram of Actual Frequency"))
+
+hist(points, prob = T, main = paste("Histogram and Density Curve of Relative Frequency"))
+lines(density(points))
+
+boxplot(points, horizontal = T, range = 1.5)
+```
+
+The summary of the categorical variable "position" is give as the following:
+```{r, eval = T}
+factor(position)
+
