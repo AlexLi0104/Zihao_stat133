@@ -66,16 +66,16 @@ summary(y_hat)
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
     ##   1.509   2.844   5.206   6.187   8.184  23.400
 
-The equation of the regression line is: $\\hat{Y} = 1.509 + 0.008558X$
+The equation of the regression line is: Y = 1.5090766 + 0.0085576X
 
 -   The coefficient b1 can be interpreted as the expected increase in salary (in unit of millions), when the points scored increases by 1.
 -   The intercept b0 can be interpreted as the salary of a player who scores zero points.
--   The predicted salaries (in millions) for players that score:
-    -   0: 1.509 million
-    -   100: 1.509 + 0.008558 \* 100 = 2.3648
-    -   500: 1.509 + 0.008558 \* 500 = 5.788
-    -   1000: 1.509 + 0.008558 \* 1000 = 10.067
-    -   2000: 1.509 + 0.008558 \* 2000 = 18.625
+-   The predicted salaries (in millions, rounded to 3 digits) for players that score:
+    -   **0 point:** 1.509 million
+    -   **100 points:** 1.5090766 + 0.0085576\*100 = 2.365 million
+    -   **500 points:** 1.5090766 + 0.0085576\*500 = 5.788 million
+    -   **1000 points:** 1.5090766 + 0.0085576\*1000 = 10.067 million
+    -   **2000 points:** 1.5090766 + 0.0085576\*2000 = 18.624 million
 
 #### Plotting the Regression Line
 
@@ -93,12 +93,12 @@ text(2000,25,labels = "lowess", col = "red")
 #### Regression Residuals and Coefficient of Determination
 
 ``` r
-residual <- salary_million - (1.509 + 0.008558*points)
+residual <- salary_million - (b0 + b1*points)
 summary(residual)
 ```
 
-    ##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-    ## -14.19000  -2.79200  -1.09500  -0.00016   2.55600  18.81000
+    ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    ## -14.190  -2.792  -1.095   0.000   2.556  18.810
 
 ``` r
 RSS <- sum(residual^2)
@@ -129,7 +129,8 @@ scatterplot3d(points, experience_int, salary_million, xlab = "Points",
 <img src="hw01-Zihao-Li_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-8-2.png" style="display: block; margin: auto;" />
 
 ``` r
-boxplot(salary_million ~ position_fac, xlab = "Position", ylab = "Salary (in millions)", main = paste("Boxplot for Salary and Position"), par(mar=c(6,4,4,4)))
+boxplot(salary_million ~ position_fac, xlab = "Position", ylab = "Salary (in millions)", 
+        main = paste("Boxplot for Salary and Position"), par(mar=c(6,4,4,4)))
 ```
 
 <img src="hw01-Zihao-Li_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-8-3.png" style="display: block; margin: auto;" />
