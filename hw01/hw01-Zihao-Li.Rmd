@@ -28,7 +28,7 @@ table(position_fac)
 ####Scatterplot of points and salary:
 ```{r, fig.align = 'center'}
 plot(points, salary_million, xlab = "Points", ylab = "Salary (in millions)", 
-     main = paste("Scatterplot of Points and Salary"), col = "red", pch = 1, cex = 0.8)
+     main = "Scatterplot of Points and Salary", col = "red", pch = 1, cex = 0.8)
 ```
 
 ####Correlation between points and salary:
@@ -68,8 +68,8 @@ The equation of the regression line is: Y = `r b0` + `r b1`X
 ####Plotting the Regression Line
 ```{r, fig.align = 'center'}
 plot(points, salary_million, xlab = "Points", ylab = "Salary (in millions)", 
-     main = paste("Scatterplot of Points and Salary"), col = "grey", pch = 1, cex = 0.8)
-abline(1.509, 0.0088558, lwd = 2, col = "purple")
+     main = "Scatterplot of Points and Salary", col = "grey", pch = 1, cex = 0.8)
+abline(b0, b1, lwd = 2, col = "purple")
 lines(lowess(points, salary_million, f = 2/3), col = "red", lwd = 2)
 text(2400,20,labels = "regression", col = "purple")
 text(2000,25,labels = "lowess", col = "red")
@@ -88,16 +88,17 @@ R2
 ####Exploring Position and Experience
 ```{r, fig.align = 'center'}
 plot(experience_int, salary_million, xlab = "Years of Experience", 
-     ylab = "Salary (in millions)", main = paste("Scatterplot with Lowess Smooth"),
+     ylab = "Salary (in millions)", main = "Scatterplot with Lowess Smooth",
      col = "grey", pch = 1, cex = 0.8)
 lines(lowess(experience_int, salary_million, f = 2/3), col = "red", lwd = 2)
 
 library("scatterplot3d")
-scatterplot3d(points, experience_int, salary_million, xlab = "Points", 
-              ylab = "Experience", zlab = "Salary (in millions)", color = "red")
+scatterplot3d(points, experience_int, salary_million, 
+              main = "3D Plot of Salary with respect to Points and Experience", 
+              xlab = "Points", ylab = "Experience", zlab = "Salary (in millions)", color = "red")
 
 boxplot(salary_million ~ position_fac, xlab = "Position", ylab = "Salary (in millions)", 
-        main = paste("Boxplot for Salary and Position"), par(mar=c(6,4,4,4)))
+        main = "Boxplot for Salary and Position", par(mar=c(6,4,4,4)))
 ```
   
   - Brief descriptions for the plots:

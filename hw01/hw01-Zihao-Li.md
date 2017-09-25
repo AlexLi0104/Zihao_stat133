@@ -31,7 +31,7 @@ table(position_fac)
 
 ``` r
 plot(points, salary_million, xlab = "Points", ylab = "Salary (in millions)", 
-     main = paste("Scatterplot of Points and Salary"), col = "red", pch = 1, cex = 0.8)
+     main = "Scatterplot of Points and Salary", col = "red", pch = 1, cex = 0.8)
 ```
 
 <img src="hw01-Zihao-Li_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
@@ -81,8 +81,8 @@ The equation of the regression line is: Y = 1.5090766 + 0.0085576X
 
 ``` r
 plot(points, salary_million, xlab = "Points", ylab = "Salary (in millions)", 
-     main = paste("Scatterplot of Points and Salary"), col = "grey", pch = 1, cex = 0.8)
-abline(1.509, 0.0088558, lwd = 2, col = "purple")
+     main = "Scatterplot of Points and Salary", col = "grey", pch = 1, cex = 0.8)
+abline(b0, b1, lwd = 2, col = "purple")
 lines(lowess(points, salary_million, f = 2/3), col = "red", lwd = 2)
 text(2400,20,labels = "regression", col = "purple")
 text(2000,25,labels = "lowess", col = "red")
@@ -113,7 +113,7 @@ R2
 
 ``` r
 plot(experience_int, salary_million, xlab = "Years of Experience", 
-     ylab = "Salary (in millions)", main = paste("Scatterplot with Lowess Smooth"),
+     ylab = "Salary (in millions)", main = "Scatterplot with Lowess Smooth",
      col = "grey", pch = 1, cex = 0.8)
 lines(lowess(experience_int, salary_million, f = 2/3), col = "red", lwd = 2)
 ```
@@ -122,15 +122,16 @@ lines(lowess(experience_int, salary_million, f = 2/3), col = "red", lwd = 2)
 
 ``` r
 library("scatterplot3d")
-scatterplot3d(points, experience_int, salary_million, xlab = "Points", 
-              ylab = "Experience", zlab = "Salary (in millions)", color = "red")
+scatterplot3d(points, experience_int, salary_million, 
+              main = "3D Plot of Salary with respect to Points and Experience", 
+              xlab = "Points", ylab = "Experience", zlab = "Salary (in millions)", color = "red")
 ```
 
 <img src="hw01-Zihao-Li_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-8-2.png" style="display: block; margin: auto;" />
 
 ``` r
 boxplot(salary_million ~ position_fac, xlab = "Position", ylab = "Salary (in millions)", 
-        main = paste("Boxplot for Salary and Position"), par(mar=c(6,4,4,4)))
+        main = "Boxplot for Salary and Position", par(mar=c(6,4,4,4)))
 ```
 
 <img src="hw01-Zihao-Li_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-8-3.png" style="display: block; margin: auto;" />
