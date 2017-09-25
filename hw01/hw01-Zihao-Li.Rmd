@@ -16,14 +16,19 @@ ls()
 ```{r}
 salary_million <- salary/1000000
 salary_million <- round(salary_million, digits = 2)
+salary_million
 
 experience_new <- replace(experience, experience == "R", 0)
 experience_int <- as.integer(experience_new)
+experience_int
 
 position_fac <- factor(position)
+position_fac
+
 levels(position_fac) <- c("center", "power_fwd", "point_guard", "small_fwd", "shoot_guard")
 table(position_fac)
 ```
+As shown, the frequency for center is 89, power fwd is 89, point guard is 85, small fwd is 83, and shoot guard is 95.
 
 ####Scatterplot of points and salary:
 ```{r, fig.align = 'center'}
@@ -35,12 +40,26 @@ plot(points, salary_million, xlab = "Points", ylab = "Salary (in millions)",
 ```{r}
 n <- length(points)
 x_mean <- sum(points)/n
+x_mean
+
 y_mean <- sum(salary_million)/n
+y_mean
+
 x_var <- sum((points - x_mean)^2)/(n-1)
+x_var
+
 y_var <- sum((salary_million - y_mean)^2)/(n-1)
+y_var
+
 x_sd <- sqrt(x_var)
+x_sd
+
 y_sd <- sqrt(y_var)
+y_sd
+
 covariance <- sum((points - x_mean)*(salary_million - y_mean))/(n-1)
+covariance
+
 correlation <- covariance/(x_sd*y_sd)
 correlation
 ```
@@ -48,9 +67,12 @@ correlation
 ####Linear Regression:
 ```{r}
 b1 <- correlation*y_sd/x_sd
-b0 <- y_mean - b1*x_mean
-y_hat <- b0 + b1*points
+b1
 
+b0 <- y_mean - b1*x_mean
+b0
+
+y_hat <- b0 + b1*points
 summary(y_hat)
 ```
 
@@ -80,7 +102,9 @@ text(2000,25,labels = "lowess", col = "red")
 residual <- salary_million - (b0 + b1*points)
 summary(residual)
 RSS <- sum(residual^2)
+RSS
 TSS <- sum((salary_million - y_mean)^2)
+TSS
 R2 <-  1 - RSS/TSS
 R2
 ```
