@@ -1,0 +1,135 @@
+---
+title: "hw02-Zihao-Li"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+####Importing data file:
+```{r}
+dat1 <- read.csv("data/nba2017-player-statistics.csv", colClasses = 
+                   c("character", "character", "factor", "character", "real", rep("integer", 19)))
+levels(dat1$Position) <- c("center", "power_fwd", "point_guard", "small_fwd", "shoot_guard")
+str(dat1)
+```
+
+```{r}
+library(readr)
+dat2 <- read_csv("data/nba2017-player-statistics.csv", col_types = cols(
+  .default = col_integer(),
+  Player = col_character(),
+  Team = col_character(),
+  Experience = col_character(),
+  Position = col_factor(NULL)
+)
+)
+
+levels(dat2$Position) <- c("center", "power_fwd", "point_guard", "small_fwd", "shoot_guard")
+str(dat2)
+```
+
+####Processing of "Experience"
+```{r}
+dat1$Experience[dat1$Experience == "R"] <- "0"
+dat1$Experience <- as.integer(dat1$Experience)
+typeof(dat1$Experience)
+```
+
+####Performance of players
+Adding variables to the data frame:
+```{r}
+dat1$Missed_FG <- dat1$FGA - dat1$FGM
+dat1$Missed_FT <- dat1$FTA - dat1$FTM
+dat1$PTS <- dat1$Points3*3 + dat1$Points2*2 + dat1$FTM
+dat1$REB <- dat1$OREB + dat1$DREB
+dat1$MPG <- dat1$MIN/dat1$GP
+
+dat1$EFF <- (dat1$PTS + dat1$REB + dat1$AST + dat1$STL + dat1$BLK - dat1$Missed_FG - dat1$Missed_FT - dat1$TO) / dat1$GP
+summary(dat1$EFF)
+
+hist(dat1$EFF, main = "Histogram of Efficiency (EFF)", xlab = "EFF", ylab = "Frequency", las = 1, col = "grey")
+
+EFF_order <- dat1[order(dat1$EFF, decreasing = T),]
+EFF_order[1:5, c("Player", "Team", "Salary", "EFF")]
+
+dat1$Player[dat1$EFF<0]
+
+cor_PTS <- cor(dat1$PTS, dat1$EFF)
+cor_PTS
+
+cor_REB <- cor(dat1$REB, dat1$EFF)
+cor_REB
+
+cor_AST <- cor(dat1$AST, dat1$EFF)
+cor_AST
+
+cor_STL <- cor(dat1$STL, dat1$EFF)
+cor_STL
+
+cor_BLK <- cor(dat1$BLK, dat1$EFF)
+cor_BLK
+
+cor_Missed_FG <- -cor(dat1$Missed_FG, dat1$EFF)
+cor_Missed_FG
+
+cor_Missed_FT <- -cor(dat1$Missed_FT, dat1$EFF)
+cor_Missed_FT
+
+cor_TO <- -cor(dat1$TO, dat1$EFF)
+cor_TO
+
+overall_cor <- c(cor_PTS, cor_REB, cor_AST, cor_STL, cor_BLK, cor_Missed_FG, cor_Missed_FT, cor_TO)
+overall_cor <- sort(overall_cor, decreasing = T)
+overall_cor
+
+color <- c("red", "grey")[(overall_cor > 0)+1]
+
+barplot(overall_cor, main = "Correlations between Player Stats and EFF", ylim = c(-1.0, 1.0), names.arg = c("PTS", "REB", "AST", "STL", "BLK", "Missed_FG", "Missed_FT", "TO"), col = color, border = NA, cex.names = 0.65)
+```
+
+####Efficiency and Salary
+```{r}
+par(mar = c(6.5, 6.5, 3, 0.5))
+plot(dat1$EFF, dat1$Salary, xlab = "", ylab = "", las = 1, cex = 0.9)
+mtext(side=1, text="Efficiency", line=3)
+mtext(side=2, text="Salary", line=5)
+mtext(side=3, text="Scatter plot of Efficiency and Salary", line=1.5)
+lines(lowess(dat1$EFF, dat1$Salary), lwd = 3, col = "red")
+
+linear_cor <- cor(dat1$EFF, dat1$Salary)
+linear_cor
+```
+
+The relationship between EFF and salary is positively correlated, with a correlation coefficient equal to `r round(linear_cor, digits = 2)`. It means that the more efficient a player is, the higher the salary he will get.
+
+For rookie players:
+```{r}
+dat1$Player[dat1$MPG >=20]
+Player2 <- dat1[dat1$MPG >=20, ]
+par(mar = c(6.5, 6.5, 3, 0.5))
+plot(Player2$EFF, Player2$Salary, xlab = "", ylab = "", las = 1, cex = 0.9)
+mtext(side=1, text="Efficiency", line=3)
+mtext(side=2, text="Salary", line=5)
+mtext(side=3, text="Scatter plot of Efficiency and Salary (without Rookies)", line=1.5)
+lines(lowess(Player2$EFF, Player2$Salary), lwd = 3, col = "red")
+
+linear_cor2 <- cor(Player2$EFF, Player2$Salary)
+linear_cor2
+```
+
+It is still true that EFF and salary are positively correlated, by the correlation coefficient is smaller for more experience players. 
+
+####Reflections
+
+  - Plotting is hard, especially adjusting the axis labels so that they don't overlap with the axis values.
+  - Manipulating vectors and data frame now seems easy.
+  - I didn't really need any help. I sort of figure things out based on the R instructions.
+  - It took me approximately two hours.
+  - The most time consuming part is plotting.
+  - I still don't fully grasp the lowess line part.
+  - Adjusting plots is frustrating.
+
+
+
