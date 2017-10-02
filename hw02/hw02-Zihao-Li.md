@@ -439,3 +439,13 @@ linear_cor2
     ## [1] 0.5367224
 
 It is still true that EFF and salary are positively correlated, by the correlation coefficient is smaller for more experience players.
+
+#### Reflections
+
+-   Plotting is hard, especially adjusting the axis labels so that they don't overlap with the axis values.
+-   Manipulating vectors and data frame now seems easy.
+-   I didn't really need any help. I sort of figure things out based on the R instructions.
+-   It took me approximately two hours.
+-   The most time consuming part is plotting.
+-   I still don't fully grasp the lowess line part.
+-   Adjusting plots is frustrating.
