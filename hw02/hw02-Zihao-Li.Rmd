@@ -17,12 +17,14 @@ str(dat1)
 
 ```{r}
 library(readr)
-dat2 <- read_csv("data/nba2017-player-statistics.csv", col_types = cols(
+dat2 <- data.frame(read_csv("data/nba2017-player-statistics.csv", col_types = cols(
   .default = col_integer(),
   Player = col_character(),
   Team = col_character(),
   Experience = col_character(),
-  Position = col_factor(NULL)
+  Position = col_factor(c("C", "PF", "PG", "SF", "SG")),
+  Salary = col_double()
+)
 )
 )
 

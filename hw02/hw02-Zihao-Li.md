@@ -38,35 +38,27 @@ str(dat1)
 
 ``` r
 library(readr)
-dat2 <- read_csv("data/nba2017-player-statistics.csv", col_types = cols(
+dat2 <- data.frame(read_csv("data/nba2017-player-statistics.csv", col_types = cols(
   .default = col_integer(),
   Player = col_character(),
   Team = col_character(),
   Experience = col_character(),
-  Position = col_factor(NULL)
+  Position = col_factor(c("C", "PF", "PG", "SF", "SG")),
+  Salary = col_double()
 )
 )
-```
+)
 
-    ## Warning in rbind(names(probs), probs_f): number of columns of result is not
-    ## a multiple of vector length (arg 1)
-
-    ## Warning: 46 parsing failures.
-    ## row # A tibble: 5 x 5 col     row    col               expected  actual expected   <int>  <chr>                  <chr>   <chr> actual 1     2 Salary no trailing characters .20E+07 file 2    10 Salary no trailing characters .00E+06 row 3    15 Salary no trailing characters .00E+06 col 4    39 Salary no trailing characters .20E+07 expected 5    52 Salary no trailing characters .00E+06 actual # ... with 1 more variables: file <chr>
-    ## ... ................. ... ............................................. ........ ............................................. ...... ............................................. .... ............................................. ... ............................................. ... ............................................. ........ ............................................. ...... .......................................
-    ## See problems(...) for more details.
-
-``` r
 levels(dat2$Position) <- c("center", "power_fwd", "point_guard", "small_fwd", "shoot_guard")
 str(dat2)
 ```
 
-    ## Classes 'tbl_df', 'tbl' and 'data.frame':    441 obs. of  24 variables:
+    ## 'data.frame':    441 obs. of  24 variables:
     ##  $ Player      : chr  "Al Horford" "Amir Johnson" "Avery Bradley" "Demetrius Jackson" ...
     ##  $ Team        : chr  "BOS" "BOS" "BOS" "BOS" ...
-    ##  $ Position    : Factor w/ 5 levels "center","power_fwd",..: 1 2 3 4 5 4 5 3 5 2 ...
+    ##  $ Position    : Factor w/ 5 levels "center","power_fwd",..: 1 2 5 3 4 3 4 5 4 2 ...
     ##  $ Experience  : chr  "9" "11" "6" "R" ...
-    ##  $ Salary      : int  26540100 NA 8269663 1450000 1410598 6587132 6286408 1825200 4743000 NA ...
+    ##  $ Salary      : num  26540100 12000000 8269663 1450000 1410598 ...
     ##  $ Rank        : int  4 6 5 15 11 1 3 13 8 10 ...
     ##  $ Age         : int  30 29 26 22 31 27 26 21 20 29 ...
     ##  $ GP          : int  68 80 55 5 47 76 72 29 78 78 ...
@@ -86,68 +78,6 @@ str(dat2)
     ##  $ STL         : int  52 52 68 0 9 70 72 10 35 26 ...
     ##  $ BLK         : int  87 62 11 0 7 13 23 2 18 17 ...
     ##  $ TO          : int  116 77 88 0 25 210 79 4 68 39 ...
-    ##  - attr(*, "problems")=Classes 'tbl_df', 'tbl' and 'data.frame': 46 obs. of  5 variables:
-    ##   ..$ row     : int  2 10 15 39 52 54 66 95 96 115 ...
-    ##   ..$ col     : chr  "Salary" "Salary" "Salary" "Salary" ...
-    ##   ..$ expected: chr  "no trailing characters" "no trailing characters" "no trailing characters" "no trailing characters" ...
-    ##   ..$ actual  : chr  ".20E+07" ".00E+06" ".00E+06" ".20E+07" ...
-    ##   ..$ file    : chr  "'data/nba2017-player-statistics.csv'" "'data/nba2017-player-statistics.csv'" "'data/nba2017-player-statistics.csv'" "'data/nba2017-player-statistics.csv'" ...
-    ##  - attr(*, "spec")=List of 2
-    ##   ..$ cols   :List of 24
-    ##   .. ..$ Player      : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_character" "collector"
-    ##   .. ..$ Team        : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_character" "collector"
-    ##   .. ..$ Position    :List of 3
-    ##   .. .. ..$ levels    : NULL
-    ##   .. .. ..$ ordered   : logi FALSE
-    ##   .. .. ..$ include_na: logi FALSE
-    ##   .. .. ..- attr(*, "class")= chr  "collector_factor" "collector"
-    ##   .. ..$ Experience  : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_character" "collector"
-    ##   .. ..$ Salary      : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ Rank        : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ Age         : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ GP          : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ GS          : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ MIN         : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ FGM         : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ FGA         : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ Points3     : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ Points3_atts: list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ Points2     : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ Points2_atts: list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ FTM         : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ FTA         : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ OREB        : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ DREB        : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ AST         : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ STL         : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ BLK         : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   .. ..$ TO          : list()
-    ##   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   ..$ default: list()
-    ##   .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-    ##   ..- attr(*, "class")= chr "col_spec"
 
 #### Processing of "Experience"
 
