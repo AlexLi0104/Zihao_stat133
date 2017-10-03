@@ -123,6 +123,7 @@ linear_cor2
 
 It is still true that EFF and salary are positively correlated, by the correlation coefficient is smaller for more experience players. 
 
+
 ####Reflections
 
   - Plotting is hard, especially adjusting the axis labels so that they don't overlap with the axis values.
