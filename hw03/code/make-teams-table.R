@@ -1,7 +1,7 @@
 
 # Script for HW3
 
-# This is the script that contains the code for HW3, which ranks NBA teams.
+# This is the script that contains the code for HW3, which manipulates two data frames and creates a new data frame.
 
 # The inputs of the script are NBA data from the github website of stat-133. This includes two files, one about "stats" and one about "roster".
 
