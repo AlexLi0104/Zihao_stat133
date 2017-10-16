@@ -3,9 +3,9 @@
 
 # This is the script that contains the code for HW3, which ranks NBA teams.
 
-# The inputs of the script are NBA data from the github website of stat-133. 
+# The inputs of the script are NBA data from the github website of stat-133. This includes two files, one about "stats" and one about "roster".
 
-# The outputs of the script will be several plots, tables, as well as other output values.
+# The outputs of the script will be several plots, tables, as well as a new csv file.
 
 library(readr)
 library(dplyr)
