@@ -47,7 +47,7 @@ teams <- dat1 %>%
 
 summary(teams)
   
-sink(file = "data/teams-summary.txt")
+sink(file = "output/teams-summary.txt")
   summary(teams)
 sink()
 
