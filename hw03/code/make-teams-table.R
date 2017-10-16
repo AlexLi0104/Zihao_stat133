@@ -3,9 +3,10 @@
 
 # This is the script that contains the code for HW3, which manipulates two data frames and creates a new data frame.
 
-# The inputs of the script are NBA data from the github website of stat-133. This includes two files, one about "stats" and one about "roster".
+# The inputs of the script are NBA data from the github website of stat-133. This includes two files, one 
+# is "nba2017-stats.csv" and the other one is "nba2017-roster.csv".
 
-# The outputs of the script will be several plots, tables, as well as a new csv file.
+# The outputs of the script will be two plots, two txt tables, as well as "nba2017-teams.csv".
 
 library(readr)
 library(dplyr)
