@@ -61,7 +61,7 @@ dev.off()
 pdf(file = "images/experience_salary.pdf")
   ggplot(data = teams) + geom_point(aes(x = teams$experience, y = teams$salary), alpha = 0) + 
     geom_text(x = teams$experience, y = teams$salary, label = teams$team) + 
-    labs(x = "Experience", y = "Salary")
+    labs(x = "Experience", y = "Salary", title = "Scatterplot of Experience and Salary")
 dev.off()
 
 
