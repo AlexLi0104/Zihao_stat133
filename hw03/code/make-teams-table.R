@@ -59,7 +59,7 @@ pdf(file = "images/teams_star_plot.pdf")
 dev.off()
 
 pdf(file = "images/experience_salary.pdf")
-  ggplot(data = teams) + geom_point(aes(x = teams$experience, y = teams$salary), alpha = 0) + geom_text(x = teams$experience, y = teams$salary, label = teams$team)
+  ggplot(data = teams) + geom_point(aes(x = teams$experience, y = teams$salary), alpha = 0) + geom_text(x = "Experience", y = "Salary", label = teams$team)
 dev.off()
 
 
