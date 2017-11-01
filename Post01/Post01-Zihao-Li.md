@@ -285,6 +285,8 @@ Based on these two plots, it is clear that the proportion of variations explaine
 In addition to making a screetplot, we would also like to visualize how the objects and variables are related. A good way to do this is by making a biplot, which plots the position of objects relative to the PC's, as well as the correlations of variables. The function that does this is called "ggbiplot", and is shown in <https://github.com/vqv/ggbiplot/blob/master/R/ggbiplot.r>. Since this function is quite long, I've decided to hide this code chunk in my final knitted document. If you are interested, you are welcomed to go on this website and see how the function works. 
 
 ```{r message = F}
+# The parameter circle determines whether to draw a circle around the arrows
+
 ggbiplot(pca_team, labels = teams$team, circle = T)
 ```
 
