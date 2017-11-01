@@ -7,12 +7,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-``` {r, include = FALSE}
-knitr::opts_knit$set(root.dir = "../../../../Zihao_stat133/stat133-hws-fall17/hw03")
-```
- 
-<br/>
-
 ### 1. Introduction
 
 Principal Component Analysis (PCA), a statistical method based on orthogonal transformation and singular value decomposition, is a powerful tool to reduce the dimension of the data while capturing the most of its variabilities. We have learned some general mathematical ideas behind PCA decomposition so far in class, and we also did a PCA ranking of the NBA teams in one of our homework assignments. 
