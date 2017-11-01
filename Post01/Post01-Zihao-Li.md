@@ -388,3 +388,5 @@ PCA is a technique to reduce the dimension of data while capturing most of its v
 <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3298499/>
 
 <http://www.nature.com/nphys/journal/v10/n9/full/nphys3029.html>
+
+<http://www.sthda.com/english/wiki/impressive-package-for-3d-and-4d-graph-r-software-and-data-visualization>
