@@ -239,7 +239,9 @@ The first thing that we would like to know is how much variations each principal
 
 ```{r}
 # Creates a function screeplot() whose input is a prcomp() result
-# This function is taken from <http://rstudio-pubs-static.s3.amazonaws.com/27823_dbc155ba66444eae9eb0a6bacb36824f.html> with some modifications
+# This function is taken from
+# <http://rstudio-pubs-static.s3.amazonaws.com/27823_dbc155ba66444eae9eb0a6bacb36824f.html> 
+# with some modifications
 
 screeplot <- function(x) {
     
