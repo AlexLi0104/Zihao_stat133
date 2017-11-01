@@ -354,7 +354,8 @@ library(plot3D)
 # the pch parameter determines the type of dot used
 
 scatter3D(x = pca_team$x[,1], y = pca_team$x[,2], z = pca_team$x[,3], colvar = NULL, col = "blue", 
-  pch = 19, xlab = "PC1", ylab = "PC2", zlab = "PC3", main = "3D Plot of First Three PC's")
+  pch = 19, xlab = "PC1", ylab = "PC2", zlab = "PC3", 
+  main = "3D Plot of First Three PC's")
 ```
 
 Each dot in this plot represents a team with some PC1, PC2, and PC3, as labeled by the axes. Its position determines how well it is explained by each of the PC's. Imagine this as a three-dimensional biplot, where now we introduce a third dimension of PC3 (the z-axis). 

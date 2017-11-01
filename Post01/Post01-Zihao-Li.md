@@ -351,7 +351,8 @@ We can further modify the plot so that it looks more informative.
 # bty = "b2" makes grid lines on each plane.
 
 scatter3D(x = pca_team$x[,1], y = pca_team$x[,2], z = pca_team$x[,3], colvar = NULL, col = "blue", 
-  pch = 19, xlab = "PC1", ylab = "PC2", zlab = "PC3", main = "3D Plot of First three PC's", phi = 20, bty = "b2", theta = 25, type = "h")
+  pch = 19, xlab = "PC1", ylab = "PC2", zlab = "PC3", 
+  main = "3D Plot of First three PC's", phi = 20, bty = "b2", theta = 25, type = "h")
 ```
 
 <br/>
