@@ -146,9 +146,9 @@ for (i in 17:22) {
   sink()
 }
 
-sink('data/cleandata/cleanscores.csv')
-  cleanscores
-sink()
+# Export the csv file
+write.csv(cleanscores, file = 'data/cleandata/cleanscores.csv', row.names = F)
+
 
 
 

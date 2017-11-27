@@ -1,8 +1,9 @@
 
-# Load packages
+# Load packages and source functions
 library(shiny)
 library(ggvis)
 library(dplyr)
+
 
 # Define UI
 ui <- fluidPage(
@@ -13,6 +14,7 @@ ui <- fluidPage(
   # Sidebar with different widgets depending on the selected tab
   sidebarLayout(
     sidebarPanel(
+      
       conditionalPanel(condition = "input.tabselected==1",
                        h3("Grades Distribution"),
                        tableOutput('table')
@@ -134,6 +136,10 @@ ui <- fluidPage(
 
 # Define server logic
 server <- function(input, output) {
+  
+  # load the cleanscores file and functions
+  source('../code/functions.R')
+  cleanscores <- read.csv('../data/cleandata/cleanscores.csv')
   
   # Barchart (for 1st tab)
   h <- setNames(data.frame(table(cleanscores$Grade)), c('Grade', 'Freq'))
