@@ -7,7 +7,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
- 
+#### Zihao Li
+#### December 3, 2017
 <br/>
 
 ### 1. Introduction
@@ -43,7 +44,7 @@ In the above scenarios, the null hypothesis ($H_0$) would be that the population
 
 The outcome of the t-test is a number called the "t-statistic". This number, along with the degree of freedom, can then determine the so called "p-value." Generally speaking, this value represents the probability that $H_0$ is true based on the data. If $p < α$, we reject the null hypothesis. If $p > α$, we fail to reject the null hypothesis.
 
-Let $n_1$ and $n_2$ denote the sample sizes, $Y_1$, $y_2$ be their corresponding sample means, and $Y_1$, $Y_2$ be their corresponding standard deviations, then the formula to determine the t-statistics is given as the following:
+Let $n_1$ and $n_2$ denote the sample sizes, $Y_1$, $Y_2$ be their corresponding sample means, and $s_1$, $s_2$ be their corresponding standard deviations, then the formula to determine the t-statistics is given as the following:
 
 \begin{equation}
   T = \dfrac{Y_1 - Y_2}{(\dfrac{s_1^2}{n_1} - \dfrac{s_2^2}{n_2})^{1/2}}
@@ -207,6 +208,7 @@ legend('topright', legend = rownames(M_and_M), cex = 0.75,
        fill = c('gray48', 'gray81'))
 
 # Perform the Chi-square test using chisq.test() function
+# rescale.p rescales the counts before applying the test
 chisq.test(M_and_M, rescale.p = T)
 ```
 
